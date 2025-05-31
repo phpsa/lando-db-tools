@@ -1,10 +1,13 @@
 {
-  "name": "@phpsa/db-tools",
+  "name": "@phpsa/lando-db-tools",
   "version": "1.0.0",
   "description": "Useful tools for working with Lando database services",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "author": "phpsa <vxdhost@gmail.com>",
   "license": "MIT",
