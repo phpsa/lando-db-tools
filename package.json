@@ -14,5 +14,10 @@
   "dependencies": {
     "clipboardy": "^2.3.0",
     "lodash": "^4.17.20"
-  }
+  },
+  "lando": {},
+  "keywords": [
+    "lando",
+    "lando-plugin"
+  ]
 }
