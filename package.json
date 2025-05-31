@@ -1,6 +1,6 @@
 {
   "name": "@phpsa/lando-db-tools",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Useful tools for working with Lando database services",
   "main": "index.js",
   "scripts": {
