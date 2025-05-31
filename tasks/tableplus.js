@@ -8,7 +8,7 @@ const fs = require("fs");
 
 module.exports = (lando) => ({
   command: "tableplus",
-  describe: "Opens the database in the Sequelpro GUI",
+  describe: "Opens the database in the TablePlus GUI",
   level: "app",
   options: _.merge({}, lando.cli.formatOptions(), {
     service: {
@@ -16,11 +16,29 @@ module.exports = (lando) => ({
       alias: ["s"],
       default: "database",
     },
+    dbuser: {
+      describe: "Specify the database service user",
+      alias: ["u"],
+      default: ""
+    },
+    dbpassword: {
+      describe: "Specify the database service password",
+      alias: ["p"],
+      default: ""
+    },
+    dbdatabase: {
+      describe: "Specify the database service database",
+      alias: ["d"],
+      default: ""
+    },
+
+
   }),
   run: (options) => {
     const app = lando.getApp(options._app.root);
     // Get services
-    app.opts = !_.isEmpty(options.service) ? { services: options.service } : {};
+    //app.opts = !_.isEmpty(options.service) ? { services: options.service } : {};
+
     return app.init().then(() => {
       const info = _.filter(app.info, (service) =>
         filterServices(service.service, options.service)
@@ -33,17 +51,24 @@ module.exports = (lando) => ({
       const creds = dbservice.creds;
       const mysqlTypes = ["mariadb", "mysql", "postgre"];
 
+      // console.log(options, creds, options.u, options.p);
+
+      const dbuser = options.u || creds.user;
+      const dbpassword = options.p || creds.password;
+      const dbdatabase = options.d || creds.database;
+
       if (mysqlTypes.some((v) => dbservice.type.includes(v))) {
         let $com = "";
+
         switch (dbservice.type) {
           default:
-            $com = `${dbservice.type}://`;
+            $com = `${dbservice.type}://`.replace("laravel-", "").replace("lamp-", "");
         }
 
         lando.shell.sh(
           [
             "open",
-            `${$com}${creds.user}:${creds.password}@127.0.0.1:${external}/${creds.database}?statusColor=007F3D&enviroment=local&name=${app._name}`,
+            `${$com}${dbuser}:${dbpassword}@127.0.0.1:${external}/${dbdatabase}?statusColor=007F3D&enviroment=local&name=${app._name}`,
           ],
           {
             mode: "exec",

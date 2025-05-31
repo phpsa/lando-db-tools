@@ -1,12 +1,12 @@
 {
-  "name": "@tanc/db-tools",
+  "name": "@phpsa/db-tools",
   "version": "1.0.0",
   "description": "Useful tools for working with Lando database services",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "tanc <mail@tanc.me>",
+  "author": "phpsa <vxdhost@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "clipboardy": "^2.3.0",

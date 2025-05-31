@@ -1,6 +1,6 @@
 # Lando database tools plugin
 
-The intention of the plugin is to make working with Lando database containers and external tools a little easier. The plugin comes with three Lando 'tasks':
+The intention of the plugin is to make working with Lando database containers and external tools a little easier. The plugin comes with five Lando 'tasks':
 
 1. `lando dbport` - prints the external port and copies it to the clipboard
 2. `lando workbench` - opens a connection using the MySQL Workbench GUI
@@ -16,31 +16,6 @@ lando dbport -s database
 
 ## Installation
 
-Until plugins are easily installed (coming soon!) in Lando you will need to clone this repository into the correct location and run `yarn`. Currently the best place to clone into is `~/.lando/plugins`. This directory may not exist yet so you will need to:
-
-```
-mkdir -p ~/.lando/plugins
-```
-
-Then you can clone:
-
-```
-git clone git@github.com:tanc/lando-db-tools.git db-tools
-```
-
-Change directory:
-
-```
-cd ~/.lando/plugins/db-tools
-```
-
-Install the needed node modules:
-
-```
-yarn
-```
-
-If you have a currently running Lando project you'll need to restart it to have this plugin picked up. I haven't tested thoroughly but its possible you'll need to `lando rebuild`.
 
 ## Commands
 
@@ -67,14 +42,14 @@ export GTK_OVERLAY_SCROLLING=0
 /usr/lib/dbeaver/dbeaver "$@"
 ```
 
-### 3. lando sequelpro
+### 4. lando sequelpro
 
 If you have the `sequelpro` GUI tool installed you can run `lando sequelpro` and have it open the GUI with a connection to your database already configured and open.
 
-### 4. lando sequelpro
+### 5. lando sequelpro
 
 If you have the `tableplus` GUI tool installed you can run `lando tableplus` and have it open the GUI with a connection to your database already configured and open.
 
 ## Windows support
 
-There is no Windows support but I imagine this should work fine when using the Linux subsystem (WSL2) in Windows 10.
+There is no Windows support but I imagine this should work fine when using the Linux subsystem (WSL2) in Windows 10/11.
